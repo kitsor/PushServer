@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>1ed73667-5c55-4c85-8e8d-d5a06fd3ab2c</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="MediatR" Version="4.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+		<DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.1" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\EventBus\KitsorLab.BuildingBlocks.EventBus.RabbitMQ\KitsorLab.BuildingBlocks.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\EventBus\KitsorLab.BuildingBlocks.EventBus\KitsorLab.BuildingBlocks.EventBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Webhost\KitsorLab.BuildingBlocks.WebHost\KitsorLab.BuildingBlocks.WebHost.csproj" />
+    <ProjectReference Include="..\KitsorLab.PushServer.PNS.ApplePush\KitsorLab.PushServer.PNS.ApplePush.csproj" />
+    <ProjectReference Include="..\KitsorLab.PushServer.PNS.WebPush\KitsorLab.PushServer.PNS.WebPush.csproj" />
+    <ProjectReference Include="..\KitsorLab.PushServer.Infastructure\KitsorLab.PushServer.Infastructure.csproj" />
+  </ItemGroup>
+
+</Project>

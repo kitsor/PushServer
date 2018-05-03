@@ -1,0 +1,12 @@
+{
+	"version": "1.0.0",
+	"name": "web-push-example",
+	"private": true,
+	"devDependencies": {
+		"typescript": "^2.8.1",
+		"ts-loader": "^4.2.0",
+		"webpack": "^4.6.0",
+		"webpack-merge": "^4.1.2",
+		"web-push": "^3.3.0"
+	}
+}

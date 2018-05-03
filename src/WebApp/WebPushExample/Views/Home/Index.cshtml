@@ -1,0 +1,55 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome to WebPush Client Demo</h1>
+
+<div id="infoMessage" class="well">...</div>
+
+<div id="message"></div>
+
+<button id="subscribeBtn" class="btn btn-default">Subscribe</button>
+
+<hr />
+
+<h3>Appication Keys Generator</h3>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<dl>
+			<dt>Public Key</dt>
+			<dd id="generatedPublicKey"></dd>
+			<dt>Private Key</dt>
+			<dd id="generatedPrivateKey"></dd>
+		</dl>
+	</div>
+	<div class="panel-footer">
+		<button id="generateKeysBtn" class="btn btn-default">Generate</button>
+	</div>
+</div>
+
+
+@section Scripts {
+
+	<script>
+
+		// Public Key
+		//	BB1zK2__rbAEDv2SdgjERC_V_yTgMbIhNpHV2tqvWnaZ-0B7XMrhIKwQMOs4AQraVJKQrlSn3wnr2a1Uqi5w5nM
+		// Private Key
+		//	3RPq_giMQG0gHPnJ73Gy9K-bvt8PCQ6EVDzR_RiLRa0
+
+		const wpsOptions = {
+			subscriptionsEndpoint: "http://localhost:59038/subscriptions",
+			pushNotificationParams: {
+				serviceWorkerUrl: "/wp-sw.js",
+				appPublicKey: "BB1zK2__rbAEDv2SdgjERC_V_yTgMbIhNpHV2tqvWnaZ-0B7XMrhIKwQMOs4AQraVJKQrlSn3wnr2a1Uqi5w5nM",
+				webServiceUrl: "https://localhost:59038/safari",
+				websitePushId: "web.com.kitsorlab.pushserver.devtest",
+			},
+		}
+
+	</script>
+
+	<script src="~/js/dist/wps.js"></script>
+	<script src="~/js/dist/keyGenerator.js"></script>
+}

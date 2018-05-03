@@ -1,0 +1,8 @@
+{
+	"websiteName": "KitsorLab PushServer Test",
+	"websitePushID": "web.com.kitsorlab.pushserver.devtest",
+	"allowedDomains": [ "https://example.com" ],
+	"urlFormatString": "http://localhost:59038/notifications/go/%@",
+	"authenticationToken": "19f8d7a6e9fb8a7f6d9330dabe",
+	"webServiceURL": "https://localhost:59038/safari"
+}
