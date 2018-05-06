@@ -6,7 +6,7 @@ Development is still in progress.
 - **PushServer.API.BackgroundTasks** (scalable). Responsible for notifications delivery.
 - **PushServer.PNS.ApplePush**. Push client for APN and PushPackage generator.
 - **PushServer.PNS.WebPush**. W3C Push client for Google Chrome and Firefox.
-- **WebPushExample**. Sample website with client-site subscription manager (subscribe/unsubscribe).
+- **WebPushExample**. Sample website with client-side subscription manager (subscribe/unsubscribe).
 
 ## Todo
 - More tests
