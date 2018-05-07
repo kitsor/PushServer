@@ -1,17 +1,12 @@
 ﻿namespace KitsorLab.PushServer.PNS.ApplePush.Connections
 {
 	using KitsorLab.PushServer.PNS.ApplePush.Models;
-	using KitsorLab.PushServer.PNS.ApplePush.Utils;
 	using Microsoft.Extensions.Logging;
 	using System;
 	using System.Net.Http;
 
 	public class JwtPKeyAPNConnection : APNConnectionBase
 	{
-		private readonly string _privateKey;
-		private readonly string _keyId;
-		private readonly string _teamId;
-
 		private AppleJWT _jwt;
 		private TimeSpan _defaultJwtTtl = TimeSpan.FromMinutes(45);
 
@@ -19,9 +14,9 @@
 		{
 			get
 			{
-				if (_jwt == null || _jwt.IssuedAt.Add(_defaultJwtTtl) > DateTime.UtcNow)
+				if (_jwt.IssuedAt.Add(_defaultJwtTtl) < DateTime.UtcNow)
 				{
-					_jwt = JWTUtils.CreateAPNJWT(_privateKey, _keyId, _teamId);
+					_jwt.Renew();
 				}
 
 				return _jwt;
@@ -30,13 +25,11 @@
 
 		/// <param name="clientHandler"></param>
 		/// <param name="url"></param>
-		public JwtPKeyAPNConnection(HttpClientHandler clientHandler, string url, string privateKey, string keyId,
+		public JwtPKeyAPNConnection(HttpClientHandler clientHandler, string url, string privateKeyPath, string keyId,
 			string teamId, ILogger<JwtPKeyAPNConnection> logger)
 			: base(clientHandler, url, logger)
 		{
-			_privateKey = privateKey ?? throw new ArgumentNullException(nameof(privateKey));
-			_keyId = keyId ?? throw new ArgumentNullException(nameof(keyId));
-			_teamId = teamId ?? throw new ArgumentNullException(nameof(teamId));
+			_jwt = new AppleJWT(privateKeyPath, keyId, teamId);
 		}
 
 		/// <param name="url"></param>

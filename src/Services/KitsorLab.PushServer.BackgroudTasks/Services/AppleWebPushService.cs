@@ -33,11 +33,11 @@
 
 			HttpClientHandler clientHandler = new HttpClientHandler();
 			string url = options.Value.ApplePNUrl;
-			string pkey = options.Value.PrivateKeyPath;
+			string pkeyPath = options.Value.PrivateKeyPath;
 			string keyId = options.Value.PrivateKeyId;
 			string teamId = options.Value.TeamId;
 
-			var connection = new JwtPKeyAPNConnection(clientHandler, url, pkey, keyId, teamId, connectionLogger);
+			var connection = new JwtPKeyAPNConnection(clientHandler, url, pkeyPath, keyId, teamId, connectionLogger);
 			_client = new ApplePushClient(connection, clientLogger);
 		}
 
