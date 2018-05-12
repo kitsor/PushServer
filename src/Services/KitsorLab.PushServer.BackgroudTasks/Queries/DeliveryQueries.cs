@@ -79,8 +79,10 @@
 						SELECT TOP (@Top) d.*
 						FROM [pushServer].[Deliveries] d WITH (ROWLOCK, READPAST)
 						INNER JOIN [pushServer].[Subscriptions] s ON (d.[SubscriptionKey] = s.[SubscriptionKey])
-						WHERE [Status] = @Status
-						ORDER BY d.[CreatedOn] ASC
+						WHERE d.[Status] = @Status
+						AND d.[ScheduledOn] <= GETDATE()
+						AND d.[ScheduledOn] IS NOT NULL
+						ORDER BY d.[ScheduledOn] ASC
 					)
 					UPDATE cte
 					SET [Status] = @NewStatus

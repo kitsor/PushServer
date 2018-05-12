@@ -1,5 +1,6 @@
 ﻿namespace KitsorLab.PushServer.API.Application.Commands
 {
+	using KitsorLab.PushServer.API.Model;
 	using KitsorLab.PushServer.Kernel.Models.Delivery;
 	using MediatR;
 	using System.Threading;
@@ -19,7 +20,8 @@
 		/// <returns></returns>
 		public async Task<Delivery> Handle(AddDeliveryCommand command, CancellationToken cancellationToken)
 		{
-			Delivery delivery = new Delivery(command.Delivery.NotificationKey, command.Delivery.SubscriptionKey);
+			DeliveryRequest request = command.Delivery;
+			Delivery delivery = new Delivery(request.NotificationKey, request.SubscriptionKey, request.ScheduledOn);
 
 			delivery = await _deliveryRepository.AddAsync(delivery);
 			await _deliveryRepository.UnitOfWork.SaveEntitiesAsync();

@@ -25,6 +25,7 @@
 			{
 				NotificationKey = @event.NotificationKey,
 				SubscriptionKey = @event.SubscriptionKey,
+				ScheduledOn = @event.ScheduledOn,
 			};
 
 			AddDeliveryCommand command = new AddDeliveryCommand(request);

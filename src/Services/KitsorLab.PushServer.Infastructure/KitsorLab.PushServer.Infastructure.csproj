@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20180427160541_Init.cs" />
+    <Compile Remove="Migrations\20180511204633_AddFKInDeliveryTable.cs" />
+    <Compile Remove="Migrations\20180511204820_AddFKInDeliveryTable.cs" />
   </ItemGroup>
 
   <ItemGroup>

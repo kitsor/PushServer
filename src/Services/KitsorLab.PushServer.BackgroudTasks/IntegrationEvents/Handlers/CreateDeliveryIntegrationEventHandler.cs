@@ -22,7 +22,7 @@
 		public async Task Handle(CreateDeliveryIntegrationEvent @event)
 		{
 			IList<Delivery> deliveries = @event.SubscriptionKeys
-				.Select(x => new Delivery(@event.NotificationKey, x))
+				.Select(x => new Delivery(@event.NotificationKey, x, @event.ScheduledOn))
 				.ToList();
 
 			await _deliveryRepository.SaveRange(deliveries);

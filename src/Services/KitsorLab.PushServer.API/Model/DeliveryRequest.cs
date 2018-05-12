@@ -10,5 +10,7 @@
 
 		[Range(1, Int64.MaxValue)]
 		public long SubscriptionKey { get; set; }
+
+		public DateTime? ScheduledOn { get; set; }
 	}
 }

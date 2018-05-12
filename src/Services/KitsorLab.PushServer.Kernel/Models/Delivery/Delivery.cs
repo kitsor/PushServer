@@ -5,7 +5,7 @@
 
 	public class Delivery : Entity, IAggregateRoot
 	{
-		public long DeliveryKey { get; set; }
+		public long DeliveryKey { get; private set; }
 		public override long PrimaryKey => DeliveryKey;
 
 		private long _notificationKey;
@@ -15,8 +15,9 @@
 		public long SubscriptionKey => _subscriptionKey;
 
 		public DeliveryStatus Status { get; private set; }
-		public DateTime CreatedOn { get; set; }
-		public DateTime UpdatedOn { get; set; }
+		public DateTime? ScheduledOn { get; private set; }
+		public DateTime CreatedOn { get; private set; }
+		public DateTime UpdatedOn { get; private set; }
 
 		public Delivery()
 		{
@@ -24,10 +25,11 @@
 
 		/// <param name="notificationKey"></param>
 		/// <param name="subscriptionKey"></param>
-		public Delivery(long notificationKey, long subscriptionKey)
+		public Delivery(long notificationKey, long subscriptionKey, DateTime? scheduledOn)
 		{
 			_notificationKey = notificationKey;
 			_subscriptionKey = subscriptionKey;
+			ScheduledOn = scheduledOn;
 			CreatedOn = DateTime.UtcNow;
 			UpdatedOn = DateTime.UtcNow;
 		}
