@@ -23,6 +23,18 @@
 			builder.Ignore(x => x.DomainEvents);
 
 			builder.HasIndex(x => new { x.Status, x.ScheduledOn });
+
+			builder.HasOne<Notification>()
+				.WithMany()
+				.IsRequired()
+				.HasForeignKey("NotificationKey")
+				.OnDelete(DeleteBehavior.Cascade);
+
+			builder.HasOne<Subscription>()
+				.WithMany()
+				.IsRequired()
+				.HasForeignKey("SubscriptionKey")
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

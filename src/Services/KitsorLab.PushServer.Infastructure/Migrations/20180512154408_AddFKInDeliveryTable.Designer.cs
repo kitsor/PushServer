@@ -13,9 +13,10 @@ using System;
 namespace KitsorLab.PushServer.Infastructure.Migrations
 {
     [DbContext(typeof(PushServerDbContext))]
-    partial class PushServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180512154408_AddFKInDeliveryTable")]
+    partial class AddFKInDeliveryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
