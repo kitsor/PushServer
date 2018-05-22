@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>@ViewData["Title"] - WebPushAdmin</title>
+	
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap.min.css" />
+		<link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+					asp-fallback-href="~/lib/bootstrap.min.css"
+					asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+					integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
+	</environment>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebPushAdmin</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+						aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+				<li class="nav-item"><a class="nav-link" asp-area="" asp-route="@SubscriptionsController.ROUTE_INDEX">Subscriptions</a></li>
+				<li class="nav-item"><a class="nav-link" asp-area="" asp-route="@NotificationsController.ROUTE_INDEX">Notifications</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		@RenderBody()
+	</div>
+
+	<hr />
+	<footer class="container-fluid">
+		<p>&copy; @DateTime.Now.Year - WebPushAdmin</p>
+	</footer>
+
+	<environment include="Development">
+		<script src="~/lib/jquery.min.js"></script>
+		<script src="~/lib/popper.min.js"></script>
+		<script src="~/lib/bootstrap.min.js"></script>
+		<script src="~/js/main.js" asp-append-version="true"></script>
+	</environment>
+	<environment exclude="Development">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+						asp-fallback-src="~/lib/jquery.min.js"
+						asp-fallback-test="window.jQuery"
+						crossorigin="anonymous"
+						integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+						asp-fallback-src="~/lib/popper.min.js"
+						asp-fallback-test="Popper"
+						crossorigin="anonymous"
+						integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q">
+		</script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+						asp-fallback-src="~/lib/bootstrap.min.js"
+						asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+						crossorigin="anonymous"
+						integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl">
+		</script>
+		<script src="~/js/main.min.js" asp-append-version="true"></script>
+	</environment>
+
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

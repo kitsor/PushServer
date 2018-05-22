@@ -1,0 +1,36 @@
+﻿@using KitsorLab.WebApp.WebPushAdmin.Models.Subscriptions
+@model SubscriptionsResponse
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Subscriptions</h2>
+
+<table class="table table-hover">
+	<tr>
+		<th>Key</th>
+		<th>User Id</th>
+		<th>Endpoint</th>
+		<th>Public Key</th>
+		<th>Token</th>
+		<th>Device Token</th>
+		<th>Type</th>
+		<th>IP</th>
+	</tr>
+	@foreach (var subscription in Model.Subscriptions)
+	{
+		<tr>
+			<td>@subscription.SubscriptionKey</td>
+			<td>@subscription.UserId</td>
+			<td>@subscription.Endpoint?.Substring(0, 20)</td>
+			<td>@subscription.PublicKey?.Substring(0, 20)</td>
+			<td>@subscription.Token</td>
+			<td>@subscription.DeviceToken?.Substring(0, 20)</td>
+			<td>@subscription.Type</td>
+			<td>@subscription.IPAddress</td>
+		</tr>
+	}
+</table>
+
+@await Html.PartialAsync("/Views/Shared/Pagination/_simplePagination.cshtml", Model.Subscriptions)
+

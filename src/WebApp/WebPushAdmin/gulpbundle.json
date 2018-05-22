@@ -1,0 +1,40 @@
+﻿{
+	"path": {
+		"inputSASS": "./Assets/Scss/",
+		"inputJS": "./Assets/Js/",
+		"library": "./Assets/Lib/",
+		"outputCSS": "./wwwroot/css/",
+		"outputJS": "./wwwroot/js/",
+		"outputLib": "./wwwroot/lib/"
+	},
+	"js": [
+		{
+			"outputFileName": "wwwroot/js/main.js",
+			"inputFiles": [
+				"main.js"
+			]
+		}
+	],
+	"lib": [
+		{
+			"inputFileName": "jquery/dist/jquery.min.js",
+			"minimized": true
+		},
+		{
+			"inputFileName": "jquery-validation/dist/jquery.validate.min.js",
+			"minimized": true
+		},
+		{
+			"inputFileName": "popper.js/dist/umd/popper.min.js",
+			"minimized": true
+		},
+		{
+			"inputFileName": "bootstrap/dist/css/bootstrap.min.css",
+			"minimized": true
+		},
+		{
+			"inputFileName": "bootstrap/dist/js/bootstrap.min.js",
+			"minimized": true
+		}
+	]
+}

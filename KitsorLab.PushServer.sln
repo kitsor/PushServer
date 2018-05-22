@@ -52,6 +52,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPushAdmin", "src\WebApp\WebPushAdmin\WebPushAdmin.csproj", "{7C0F0269-B020-4C60-BF19-CF7C919DC8C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{684D5D5E-42AF-4B28-9289-00B89EDE4BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{684D5D5E-42AF-4B28-9289-00B89EDE4BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{684D5D5E-42AF-4B28-9289-00B89EDE4BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0F0269-B020-4C60-BF19-CF7C919DC8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0F0269-B020-4C60-BF19-CF7C919DC8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0F0269-B020-4C60-BF19-CF7C919DC8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0F0269-B020-4C60-BF19-CF7C919DC8C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{D4770E1B-C00B-4D08-A338-69AF397CFB53} = {2BF3952D-4FBA-4ECF-9911-B20B358CC8DB}
 		{F3FCC574-3EFA-4198-BC99-AD3248714A9A} = {38C71036-E732-45D9-938A-941A4EC90F44}
 		{684D5D5E-42AF-4B28-9289-00B89EDE4BD4} = {F3FCC574-3EFA-4198-BC99-AD3248714A9A}
+		{7C0F0269-B020-4C60-BF19-CF7C919DC8C9} = {48135857-8802-49C9-A52B-AC308125F155}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3EA5C49-3F00-4CD6-BC82-D7A92E4525E9}

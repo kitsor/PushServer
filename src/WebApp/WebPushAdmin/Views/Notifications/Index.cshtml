@@ -1,0 +1,37 @@
+﻿@using KitsorLab.WebApp.WebPushAdmin.Models.Notifications
+@model NotificationsResponse
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h2>Notifications</h2>
+
+<table class="table table-hover">
+	<tr>
+		<th>Key</th>
+		<th>Id</th>
+		<th>Title</th>
+		<th>Message</th>
+		<th>URL</th>
+		<th>Icon URL</th>
+		<th>Image URL</th>
+		<th>Created</th>
+	</tr>
+	@foreach (var subscription in Model.Notifications)
+	{
+	<tr>
+		<td>@subscription.NotificationKey</td>
+		<td>@subscription.NotificationId</td>
+		<td>@subscription.Title</td>
+		<td>@subscription.Message</td>
+		<td>@subscription.Url</td>
+		<td>@subscription.IconUrl</td>
+		<td>@subscription.ImageUrl</td>
+		<td>@subscription.CreatedOn.ToString("yyyy-MM-d H:m:s")</td>
+	</tr>
+	}
+</table>
+
+@await Html.PartialAsync("/Views/Shared/Pagination/_simplePagination.cshtml", Model.Notifications)
+

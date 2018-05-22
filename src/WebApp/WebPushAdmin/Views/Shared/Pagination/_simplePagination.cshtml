@@ -1,0 +1,75 @@
+﻿@using KitsorLab.WebApp.WebPushAdmin.Models.Pagination
+@model IPagination
+
+
+<div class="row">
+	<div class="col">
+
+		<nav aria-label="pagination">
+			<ul class="pagination">
+
+				@if (Model.HasPreviousPage)
+				{
+					<li class="page-item">
+						<a class="page-link" tabindex="-1"
+							 asp-route="@SubscriptionsController.ROUTE_INDEX"
+							 asp-route-page="@(Model.PreviousPage)"
+							 asp-route-maxPerPage="@Model.PageSize">Previous</a>
+					</li>
+				}
+				else
+				{
+					<li class="page-item disabled">
+						<a class="page-link" href="#" tabindex="-1">Previous</a>
+					</li>
+				}
+
+				<li class="page-item">
+					<a class="page-link" tabindex="-1"
+						 asp-route="@SubscriptionsController.ROUTE_INDEX"
+						 asp-route-page="@(Model.PageIndex)"
+						 asp-route-maxPerPage="@Model.PageSize">Page:@Model.PageIndex</a>
+					</li>
+
+					@if (Model.HasNextPage)
+					{
+						<li class="page-item">
+							<a class="page-link" tabindex="-1"
+								 asp-route="@SubscriptionsController.ROUTE_INDEX"
+								 asp-route-page="@(Model.NextPage)"
+								 asp-route-maxPerPage="@Model.PageSize">Next</a>
+						</li>
+					}
+					else
+					{
+						<li class="page-item disabled">
+							<a class="page-link" href="#" tabindex="-1">Next</a>
+						</li>
+					}
+
+				</ul>
+			</nav>
+
+		</div>
+
+		<div class="col-md-auto">
+
+
+			<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+				<div class="btn-group mr-2" role="group">
+					<button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Items on Page: @Model.PageSize
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" asp-route="@SubscriptionsController.ROUTE_INDEX" asp-route-maxPerPage="20">20 items</a>
+						<a class="dropdown-item" asp-route="@SubscriptionsController.ROUTE_INDEX" asp-route-maxPerPage="50">50 items</a>
+						<a class="dropdown-item" asp-route="@SubscriptionsController.ROUTE_INDEX" asp-route-maxPerPage="100">100 items</a>
+					</div>
+				</div>
+				<span class="border rounded pt-1 pb-1 pl-3 pr-3">Results: @Model.Count of @Model.TotalItems</span>
+@*				<button type="button" disabled class="btn btn-outline-dark">Results: @Model.Count of @Model.TotalItems</button>*@
+			</div>
+
+		</div>
+	</div>

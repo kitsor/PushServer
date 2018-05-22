@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>KitsorLab.WebApp.WebPushAdmin</RootNamespace>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Lib\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
+	<Target Name="DebugRunGulp" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+		<Message Importance="high" Text="Performing Gulp tasks..." />
+		<Exec Command="node node_modules/gulp/bin/gulp.js lib" />
+		<Exec Command="node node_modules/gulp/bin/gulp.js dev:sass" />
+		<Exec Command="node node_modules/gulp/bin/gulp.js dev:js" />
+	</Target>
+</Project>

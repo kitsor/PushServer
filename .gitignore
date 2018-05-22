@@ -261,3 +261,7 @@ __pycache__/
 *.pyc
 /src/WebApp/WebPushExample/wwwroot/wp-sw.js
 /src/WebApp/WebPushExample/wwwroot/js/dist
+/src/WebApp/WebPushAdmin/Assets/Lib
+/src/WebApp/WebPushAdmin/wwwroot/css
+/src/WebApp/WebPushAdmin/wwwroot/js
+/src/WebApp/WebPushAdmin/wwwroot/lib
