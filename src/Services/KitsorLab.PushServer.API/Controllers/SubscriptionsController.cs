@@ -13,7 +13,7 @@
 
 	[Produces("application/json")]
 	[Route("/subscriptions")]
-	[Authorize]
+	//[Authorize]
 	[ValidateModel]
 	public class SubscriptionsController : Controller
 	{
@@ -24,6 +24,15 @@
 			: base()
 		{
 			_mediator = mediator;
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Get(SubscriptionListRequest model)
+		{
+			var command = new GetSubscriptionListCommand(model);
+			var response = await _mediator.Send(command);
+
+			return Ok(response);
 		}
 
 		[HttpPost]

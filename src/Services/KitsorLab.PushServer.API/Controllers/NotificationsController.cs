@@ -13,7 +13,7 @@
 
 	[Produces("application/json")]
 	[Route("/notifications")]
-	[Authorize]
+	//[Authorize]
 	[ValidateModel]
 	public class NotificationsController : Controller
 	{
@@ -26,6 +26,15 @@
 		{
 			_mediator = mediator;
 			_repository = repository;
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Get(NotificationListRequest model)
+		{
+			var command = new GetNotificationListCommand(model);
+			var response = await _mediator.Send(command);
+
+			return Ok(response);
 		}
 
 		[HttpPost]

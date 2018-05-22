@@ -5,6 +5,7 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using System.Linq.Expressions;
 	using System.Threading.Tasks;
 
 	public abstract class RepositoryBase<TC, TE>
@@ -71,6 +72,41 @@
 				});
 
 			return task;
+		}
+
+		/// <typeparam name="TKey"></typeparam>
+		/// <param name="queryable"></param>
+		/// <param name="limit"></param>
+		/// <param name="offset"></param>
+		/// <param name="orderBy"></param>
+		/// <param name="orderByDesc"></param>
+		/// <param name="isReadOnly"></param>
+		/// <returns></returns>
+		protected IQueryable<TE> CreateListQuery<TKey>(ICollection<Expression<Func<TE, bool>>> filters, 
+			Expression<Func<TE, TKey>> orderBy, bool orderByDesc, bool isReadOnly)
+		{
+			var query = CreateQuery(_context.Set<TE>(), isReadOnly);
+
+			if (filters != null)
+			foreach (var filter in filters)
+			{
+				query = query.Where(filter);
+			}
+
+			var orderedQuery = !orderByDesc
+				? query.OrderBy(orderBy)
+				: query.OrderByDescending(orderBy);
+
+			return orderedQuery;
+		}
+
+		/// <param name="query"></param>
+		/// <param name="limit"></param>
+		/// <param name="offset"></param>
+		/// <returns></returns>
+		protected IQueryable<TE> PaginateQuery(IQueryable<TE> query, int limit, int offset)
+		{
+			return query.Skip(offset).Take(limit);
 		}
 
 		/// <typeparam name="T"></typeparam>
